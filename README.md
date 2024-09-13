@@ -48,5 +48,15 @@ kubectl create deployment myapp --image=nginx
 kubectl get all
 to generate pod definition file without creating pod
 kubectl run nginx --image=nginx --dry-run=client -o yaml
-kubectl create deployment myapp --image=nginx --replicas=3 --dry-run=client -o yaml >myapp-deploy.yaml
+kubectl create deployment myapp --image=nginx --replicas=3 
+--dry-run=client -o yaml >myapp-deploy.yaml
+kubectl scale deployment myapp --replicas=7
+```
+
+```
+kubectl get svc
+kubectl create
+kubectl expose po nginx --type=NodePort
+kubectl create service nodeport nginx --tcp=80:80 --node-port=30090
+kubectl top pod simple-webapp
 ```
