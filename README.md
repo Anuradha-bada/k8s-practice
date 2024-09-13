@@ -1,11 +1,13 @@
 **Pods**: smallest deployable units containing one or more containers
 
 pod definition
-
+```
 - apiVersion: Kubernets api version
 - kind: indicates type of object (Pod/Deployment/Service/ReplicaSet)
 - metadata: contains name , labels and optionally namespace
 - spec: specifies the pod and its desired state (such as the container     image name for each container within that pod)
+
+```
 
 commands:
 ```
@@ -24,6 +26,7 @@ kubectl run nginx --image=nginx
 
 replicaSet/Deployment definition
 
+```
 - apiVersion: apps/v1
 - kind: ReplicaSet/Deployment
 - metadata: 
@@ -33,6 +36,7 @@ replicaSet/Deployment definition
   replicas: <no of replicas>
   selector: 
     matchLabels:
+```
 
 **Labels and Selectors:** Are mechanisms used to organize, group, and filter resources like Pods, Services, and other objects
 - Labels are key/value pairs that are attached to objects
@@ -67,7 +71,7 @@ kubectl scale deployment myapp --replicas=7
 - Loadbalancer: exposes the Service externally using an external load balancer. Kubernetes does not directly offer a load balancing component
 - External Name:Services of type ExternalName map a Service to a DNS name, not to a typical selector. The mapping configures your cluster's DNS server to return a CNAME record with that external hostname value.
 
-<service-name>.<namespace>.svc.cluster.local - accesible using cname
+```<service-name>.<namespace>.svc.cluster.local - accesible using cname ```
 
 ```
 kubectl get svc
