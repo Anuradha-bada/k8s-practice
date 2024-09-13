@@ -1,4 +1,6 @@
-**Pod Definition Yaml**
+**Pods**: smallest deployable units containing one or more containers
+
+pod definition
 
 - apiVersion: Kubernets api version
 - kind: indicates type of object (Pod/Deployment/Service/ReplicaSet)
@@ -16,7 +18,11 @@ kuebctl apply -f <pod-definition>.yml
 kubectl run nginx --image=nginx 
 ```
 
-**ReplicaSet Definition / Deployment definition**
+**ReplicaSet**: A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time
+
+**Deployment**: manages a set of Pods to run an application workload
+
+replicaSet/Deployment definition
 
 - apiVersion: apps/v1
 - kind: ReplicaSet/Deployment
@@ -52,6 +58,16 @@ kubectl create deployment myapp --image=nginx --replicas=3
 --dry-run=client -o yaml >myapp-deploy.yaml
 kubectl scale deployment myapp --replicas=7
 ```
+
+**Services**: Expose an application running in your cluster behind a single outward-facing endpoint, even when the workload is split across multiple backends
+
+**Types:**
+- ClusterIP: exposes the srevice on a cluster-internal ip, reachable within cluster
+- NodePort: exposes the srevice on a node IP, reachable externally
+- Loadbalancer: exposes the Service externally using an external load balancer. Kubernetes does not directly offer a load balancing component
+- External Name:Services of type ExternalName map a Service to a DNS name, not to a typical selector. The mapping configures your cluster's DNS server to return a CNAME record with that external hostname value.
+
+<service-name>.<namespace>.svc.cluster.local - accesible using cname
 
 ```
 kubectl get svc
